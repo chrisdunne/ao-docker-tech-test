@@ -1,0 +1,15 @@
+[
+    {
+      "name": "ao-test-app",
+      "image": "148367607594.dkr.ecr.eu-west-2.amazonaws.com/ao-test-app:latest",
+      "cpu": 1,
+      "memory": 512,
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80
+        }
+      ]
+    }
+]
