@@ -7,7 +7,7 @@ on:
     paths:
       - 'src/**'
   schedule:
-      - cron: '30 21 * * *'
+      - cron: '0 6 * * *'
 
 jobs:
   build:
@@ -36,6 +36,23 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./src
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+    #- name: Fill in the new image ID in the Amazon ECS task definition
+    #  id: task-def
+    #  uses: aws-actions/amazon-ecs-render-task-definition@v1
+    #  with:
+    #    task-definition: ./config/task-definition.json
+    #    container-name: ao-test-app
+    #    image: ${{ steps.build-image.outputs.image }}
+
+    #- name: Deploy Amazon ECS task definition
+    #  uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+    #  with:
+    #    task-definition: ${{ steps.task-def.outputs.task-definition }}
+    #    service: ao-test-app-service
+    #    cluster: default
+    #    wait-for-service-stability: true
 
     - name: Logout of Amazon ECR
       if: always()
