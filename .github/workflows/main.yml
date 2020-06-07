@@ -38,21 +38,21 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    #- name: Add image ID to the Amazon ECS task definition
-    #  id: task-def
-    #  uses: aws-actions/amazon-ecs-render-task-definition@v1
-    #  with:
-    #    task-definition: ./config/task-def.json
-    #    container-name: ao-test-app
-    #    image: ${{ steps.build-image.outputs.image }}
+    - name: Add image ID to the Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: ./config/task-def.json
+        container-name: ao-test-ecs-container
+        image: ${{ steps.build-image.outputs.image }}
 
-    #- name: Deploy Amazon ECS task definition
-    #  uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-    #  with:
-    #    task-definition: ${{ steps.task-def.outputs.task-definition }}
-    #    service: ao-test-ecs-service
-    #    cluster: ao-test-ecs-cluster
-    #    wait-for-service-stability: true
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: ao-test-ecs-service
+        cluster: ao-test-ecs-cluster
+        wait-for-service-stability: true
 
     - name: Logout of Amazon ECR
       if: always()
