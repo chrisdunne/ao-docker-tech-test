@@ -52,31 +52,11 @@
     "placementConstraints": [],
     "memory": null,
     "taskRoleArn": null,
-    "compatibilities": [
-      "EC2"
-    ],
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:148367607594:task-definition/ao-test-ecs-task-def",
     "family": "ao-test-ecs-task-def",
-    "requiresAttributes": [
-      {
-        "targetId": null,
-        "targetType": null,
-        "value": null,
-        "name": "com.amazonaws.ecs.capability.ecr-auth"
-      },
-      {
-        "targetId": null,
-        "targetType": null,
-        "value": null,
-        "name": "ecs.capability.execution-role-ecr-pull"
-      }
-    ],
     "pidMode": null,
     "requiresCompatibilities": [],
     "networkMode": null,
     "cpu": null,
-    "revision": 16,
-    "status": "ACTIVE",
     "inferenceAccelerators": null,
     "proxyConfiguration": null,
     "volumes": []
