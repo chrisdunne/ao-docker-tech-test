@@ -54,20 +54,11 @@ resource "aws_security_group_rule" "ao-tech-lc-sg-rule-ingress-alb" {
   source_security_group_id = aws_security_group.ao-test-alb-sg.id
 }
 
-resource "aws_security_group_rule" "ao-tech-lc-sg-rule-egress-http" {
+resource "aws_security_group_rule" "ao-tech-lc-sg-rule-egress-all" {
   type              = "egress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "all"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.ao-test-lc-sg.id
-}
-
-resource "aws_security_group_rule" "ao-tech-lc-sg-rule-egress-https" {
-  type              = "egress"
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  cidr_blocks =  ["0.0.0.0/0"]
   security_group_id = aws_security_group.ao-test-lc-sg.id
 }

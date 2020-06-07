@@ -1,8 +1,8 @@
 [
     {
-      "name": "ao-test-app",
+      "name": "ao-test-ecs-container",
       "image": "148367607594.dkr.ecr.eu-west-2.amazonaws.com/ao-test-app:latest",
-      "cpu": 1,
+      "cpu": 512,
       "memory": 512,
       "essential": true,
       "portMappings": [
