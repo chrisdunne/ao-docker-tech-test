@@ -3,13 +3,13 @@ resource "aws_launch_configuration" "ao-test-lc" {
   instance_type = "t2.micro"
   security_groups = [aws_security_group.ao-test-lc-sg.id]
   key_name        = "ao-test-keypair"
-  iam_instance_profile = "ecsInstanceRole"
+  iam_instance_profile = aws_iam_instance_profile.ao-test-instance-profile-ecs-instance-role.name
 
   lifecycle {
     create_before_destroy = true
   }
 
-  user_data = file("../../config/user_data.sh")
+  user_data = file("../config/user_data.sh")
 }
 
 data "aws_ami" "ao-test-ami" {

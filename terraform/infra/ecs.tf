@@ -18,6 +18,6 @@ resource "aws_ecs_service" "ao-test-ecs-service" {
 
 resource "aws_ecs_task_definition" "ao-test-ecs-task-def" {
   family                = "ao-test-ecs-task-def"
-  container_definitions = file("../../config/container-def.json")
+  container_definitions = file("../config/container-def.json")
   execution_role_arn    = "arn:aws:iam::148367607594:role/ecsTaskExecutionRole"
 }
