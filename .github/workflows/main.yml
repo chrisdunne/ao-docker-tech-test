@@ -7,6 +7,7 @@ on:
     paths:
       - 'src/**'
       - '.github/workflows/main.yml'
+      - 'config/task-def.json'
   schedule:
       - cron: '0 6 * * *'
 
@@ -59,4 +60,3 @@ jobs:
     - name: Logout of Amazon ECR
       if: always()
       run: docker logout ${{ steps.login-ecr.outputs.registry }}
-      
