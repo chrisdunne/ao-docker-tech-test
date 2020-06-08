@@ -4,12 +4,12 @@ services:
       build: ./src
       tty: true
       volumes:
-        - './app/src:/app/aspnetapp'
+        - './src:/src/aspnetapp'
   app2:
       build: ./src
       tty: true
       volumes:
-        - './app/src:/app/aspnetapp'
+        - './src:/src/aspnetapp'
   loadbalancer:
       build: ./loadbalancer
       tty: true

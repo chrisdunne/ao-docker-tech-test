@@ -14,6 +14,10 @@ resource "aws_ecs_service" "ao-test-ecs-service" {
     container_name   = "ao-test-ecs-container"
     container_port   = 80
   }
+
+  placement_constraints {
+    type = "distinctInstance"
+  }
 }
 
 resource "aws_ecs_task_definition" "ao-test-ecs-task-def" {
